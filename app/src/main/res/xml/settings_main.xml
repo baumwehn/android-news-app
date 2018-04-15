@@ -7,8 +7,13 @@
         android:inputType="number"
         android:key="@string/settings_limit_key"
         android:selectAllOnFocus="true"
-        android:title="@string/settings_limit_label"
+        android:title="@string/settings_limit_label" />
 
-        />
+    <ListPreference
+        android:defaultValue="@string/settings_language_en"
+        android:entries="@array/settings_language_labels"
+        android:entryValues="@array/settings_language_values"
+        android:key="@string/settings_language_key"
+        android:title="@string/settings_language_label" />
 
 </PreferenceScreen>

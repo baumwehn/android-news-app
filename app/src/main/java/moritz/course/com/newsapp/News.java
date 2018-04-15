@@ -13,7 +13,6 @@ public class News {
     private String date;
     private String trailText;
     private String contributor;
-    private String newsArticleBody;
 
     public News(String category, String title, String webUrl, String apiUrl, String date, String trailText) {
         this.category = category;
@@ -54,13 +53,5 @@ public class News {
 
     public String getTrailText() {
         return trailText;
-    }
-
-    public String getNewsArticle() {
-        return newsArticleBody;
-    }
-
-    public void createNewsArticleBody() {
-        String newsArticleBody = QueryUtil.fetchNewsArticleBody(apiUrl);
     }
 }

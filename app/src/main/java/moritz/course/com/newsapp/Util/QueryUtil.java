@@ -1,8 +1,10 @@
-package moritz.course.com.newsapp;
+package moritz.course.com.newsapp.Util;
 
 import android.net.Uri;
 
 import java.util.List;
+
+import moritz.course.com.newsapp.News;
 
 /**
  * Created by Moritz on 14.04.2018.
@@ -11,14 +13,12 @@ import java.util.List;
 public class QueryUtil {
 
     public static final String REQUEST_URL = "https://content.guardianapis.com/search";
-
     public static final String API_KEY = "275e5e77-68c3-4c43-a7f2-37a63f157af9";
     public static final String QUERY_PARAM_KEY = "api-key";
     public static final String QUERY_PARAM_LIMIT = "page-size";
     public static final String QUERY_PARAM_FIELDS = "show-fields";
     public static final String QUERY_PARAM_TAGS = "show-tags";
-
-    private static final String TAG = QueryUtil.class.getSimpleName();
+    public static final String QUERY_PARAM_LANGUAGE = "lang";
 
     private QueryUtil() {
     }

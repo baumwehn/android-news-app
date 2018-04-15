@@ -1,4 +1,4 @@
-package moritz.course.com.newsapp;
+package moritz.course.com.newsapp.Util;
 
 import android.util.Log;
 

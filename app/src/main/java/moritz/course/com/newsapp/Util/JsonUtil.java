@@ -1,4 +1,4 @@
-package moritz.course.com.newsapp;
+package moritz.course.com.newsapp.Util;
 
 import android.text.Html;
 import android.util.Log;
@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import moritz.course.com.newsapp.News;
 
 /**
  * Created by Moritz on 14.04.2018.

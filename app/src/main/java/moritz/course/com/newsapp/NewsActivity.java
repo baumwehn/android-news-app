@@ -23,15 +23,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import moritz.course.com.newsapp.Util.QueryUtil;
+
 /**
  * Created by Moritz on 14.04.2018.
  */
 
 public class NewsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
-    private static final String TAG = NewsActivity.class.getSimpleName();
     private static final int NEWS_LOADER_ID = 0;
-    private static final int ARTICLE_LOADER_ID = 1;
     private ProgressBar progressBar;
 
     @Override
@@ -40,7 +40,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_news);
 
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-
 
         TextView btnTextView = (TextView) findViewById(R.id.search_category);
         btnTextView.setOnClickListener(new View.OnClickListener() {
@@ -101,8 +100,13 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                 getString(R.string.settings_limit_key),
                 getString(R.string.settings_limit_default));
 
+        String prefLanguage = sharedPreferences.getString(
+                getString(R.string.settings_language_key),
+                getString(R.string.settings_language_default));
+
         Uri.Builder uriBuilder = QueryUtil.buildDefaultQuery();
         uriBuilder.appendQueryParameter(QueryUtil.QUERY_PARAM_LIMIT, pageLimit);
+        uriBuilder.appendQueryParameter(QueryUtil.QUERY_PARAM_LANGUAGE, prefLanguage);
 
         if (bundle == null) {
             return new NewsLoader(NewsActivity.this, uriBuilder.toString());
