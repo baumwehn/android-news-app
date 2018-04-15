@@ -3,7 +3,6 @@ package moritz.course.com.newsapp;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +25,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     @Override
     public List<News> loadInBackground() {
-        if(mUrl == null){
+        if (mUrl == null) {
             return null;
         }
         return QueryUtil.fetchNews(mUrl);

@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(R.id.edit_text_category);
                 String query = editText.getText().toString();
-                if(checkConnectivity()){
+                if (checkConnectivity()) {
                     Bundle bundle = new Bundle();
                     bundle.putString("q", query);
                     getLoaderManager().restartLoader(NEWS_LOADER_ID, bundle, NewsActivity.this);
@@ -57,7 +56,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        if (checkConnectivity()){
+        if (checkConnectivity()) {
             getLoaderManager().initLoader(NEWS_LOADER_ID, null, this);
         }
     }
@@ -83,7 +82,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         boolean networkActive = networkInfo != null && networkInfo.isConnected();
-        if(!networkActive){
+        if (!networkActive) {
             ListView newsListView = (ListView) findViewById(R.id.list);
             TextView emptyView = (TextView) findViewById(R.id.empty_view);
             emptyView.setText(R.string.no_internet_connection);
@@ -105,8 +104,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri.Builder uriBuilder = QueryUtil.buildDefaultQuery();
         uriBuilder.appendQueryParameter(QueryUtil.QUERY_PARAM_LIMIT, pageLimit);
 
-        if (bundle == null){
-           return new NewsLoader(NewsActivity.this, uriBuilder.toString());
+        if (bundle == null) {
+            return new NewsLoader(NewsActivity.this, uriBuilder.toString());
         }
         uriBuilder.appendQueryParameter("q", bundle.getString("q"));
         return new NewsLoader(NewsActivity.this, uriBuilder.toString());
@@ -131,18 +130,18 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             emptyView.setText(R.string.proper_keywords);
             newsListView.setEmptyView(emptyView);
         }
-            NewsAdapter adapter = new NewsAdapter(this, news);
+        NewsAdapter adapter = new NewsAdapter(this, news);
 
-            newsListView.setAdapter(adapter);
-            newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    final News news = (News) parent.getItemAtPosition(position);
-                    if (news.getWebUrl().isEmpty()) {
-                        return;
-                    }
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(news.getWebUrl())));
+        newsListView.setAdapter(adapter);
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final News news = (News) parent.getItemAtPosition(position);
+                if (news.getWebUrl().isEmpty()) {
+                    return;
                 }
-            });
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(news.getWebUrl())));
+            }
+        });
     }
 }

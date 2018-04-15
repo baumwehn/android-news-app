@@ -40,7 +40,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.news_date);
         String dateTime = currentNews.getDate();
-        if(!dateTime.isEmpty()){
+        if (!dateTime.isEmpty()) {
             dateTextView.setText(dateTime.replaceAll("[TZ]", " "));
         }
 

@@ -1,6 +1,5 @@
 package moritz.course.com.newsapp;
 
-import android.net.ConnectivityManager;
 import android.util.Log;
 
 import java.io.BufferedReader;

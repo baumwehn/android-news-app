@@ -60,7 +60,7 @@ public class News {
         return newsArticleBody;
     }
 
-    public void createNewsArticleBody(){
+    public void createNewsArticleBody() {
         String newsArticleBody = QueryUtil.fetchNewsArticleBody(apiUrl);
     }
 }

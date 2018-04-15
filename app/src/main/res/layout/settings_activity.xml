@@ -1,9 +1,6 @@
-<fragment
-    android:name="moritz.course.com.newsapp.SettingsActivity$NewsPreferenceFragment"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:name="moritz.course.com.newsapp.SettingsActivity$NewsPreferenceFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="moritz.course.com.newsapp.SettingsActivity"
-    >
-</fragment>
+    tools:context="moritz.course.com.newsapp.SettingsActivity"></fragment>

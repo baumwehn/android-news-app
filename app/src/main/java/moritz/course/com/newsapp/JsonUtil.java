@@ -31,7 +31,7 @@ public final class JsonUtil {
     public static List<News> processNewsJson(String jsonResponse) {
         ArrayList<News> newsArray = new ArrayList<>();
 
-        if(jsonResponse==null){
+        if (jsonResponse == null) {
             return newsArray;
         }
 
@@ -68,6 +68,7 @@ public final class JsonUtil {
 
     /**
      * Strips all HTML tags and returns a readable String.
+     *
      * @param textHtml
      * @return
      */
@@ -103,22 +104,21 @@ public final class JsonUtil {
     }
 
     /**
-     *
      * @param jsonResponse
      * @return
      */
-    public static String processNewsArticleJson(String jsonResponse){
+    public static String processNewsArticleJson(String jsonResponse) {
         String body = "";
-        if(jsonResponse==null){
+        if (jsonResponse == null) {
             return body;
         }
-        try{
+        try {
             JSONObject jsonObject = new JSONObject(jsonResponse);
             JSONObject responseObject = jsonObject.getJSONObject("response");
             JSONObject content = jsonObject.getJSONObject("content");
             JSONObject fields = jsonObject.getJSONObject("fields");
             body = fields.getString("body");
-        }catch (JSONException e) {
+        } catch (JSONException e) {
             Log.e(TAG, "Problem parsing the news JSON results", e);
         }
         return getTextFromHtml(body);

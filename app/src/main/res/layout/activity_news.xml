@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2016 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2016 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,20 +12,16 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorBackground"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        >
+        android:layout_height="64dp">
 
         <EditText
             android:id="@+id/edit_text_category"
@@ -34,43 +29,43 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:hint="@string/search_hint"
-            tools:text="Football"/>
+            tools:text="Football" />
+
         <TextView
             android:id="@+id/search_category"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/search_btn"
-            tools:text="Search"/>
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Search" />
     </LinearLayout>
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/list"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="0dp"/>
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="0dp"
+            android:orientation="vertical" />
 
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            android:textAppearance="?android:textAppearanceMedium" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 </LinearLayout>

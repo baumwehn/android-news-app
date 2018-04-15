@@ -27,11 +27,11 @@ public class QueryUtil {
         return JsonUtil.processNewsJson(JsonUtil.getNewsJson(urlString));
     }
 
-    public static String fetchNewsArticleBody(String urlString){
+    public static String fetchNewsArticleBody(String urlString) {
         return JsonUtil.processNewsArticleJson(JsonUtil.getNewsJson(getQueryParamBody(urlString)));
     }
 
-    private static String getQueryParamBody(String query){
+    private static String getQueryParamBody(String query) {
         Uri baseUri = Uri.parse(QueryUtil.REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
@@ -42,7 +42,7 @@ public class QueryUtil {
         return uriBuilder.toString();
     }
 
-    public static Uri.Builder buildDefaultQuery(){
+    public static Uri.Builder buildDefaultQuery() {
         Uri baseUri = Uri.parse(REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 

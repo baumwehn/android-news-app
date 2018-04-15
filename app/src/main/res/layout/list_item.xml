@@ -3,62 +3,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:orientation="vertical"
     android:paddingEnd="16dp"
-    android:paddingStart="16dp"
-    android:layout_marginTop="8dp">
+    android:paddingStart="16dp">
 
     <TextView
         android:id="@+id/news_contributor"
-        android:textColor="@color/colorContributor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:fontFamily="sans-serif-medium"
         android:maxLines="1"
         android:textAllCaps="true"
+        android:textColor="@color/colorContributor"
         android:textSize="12sp"
-        tools:text="John Brewin"/>
+        tools:text="John Brewin" />
+
     <TextView
         android:id="@+id/news_title"
-        android:textColor="@color/textColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
+        android:textColor="@color/textColor"
         android:textSize="16sp"
-        tools:text="Crystal Palace v Brighto…verton and more – live!"/>
+        tools:text="Crystal Palace v Brighto…verton and more – live!" />
 
     <TextView
         android:id="@+id/news_trailer"
-        android:textColor="@color/textColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
+        android:textColor="@color/textColor"
         android:textSize="12sp"
-        tools:text="Rolling report: the latest from the County Championship grounds on the opening weekend"/>
+        tools:text="Rolling report: the latest from the County Championship grounds on the opening weekend" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/news_date"
-            android:textColor="@color/categoryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:textColor="@color/categoryColor"
             android:textSize="12sp"
-            tools:text="2018-04-15"/>
+            tools:text="2018-04-15" />
+
         <TextView
             android:id="@+id/news_category"
-            android:textColor="@color/categoryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:textColor="@color/categoryColor"
             android:textSize="12sp"
-            tools:text="Football"/>
+            tools:text="Football" />
 
     </RelativeLayout>
 
