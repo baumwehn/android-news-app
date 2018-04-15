@@ -1,5 +1,7 @@
 package moritz.course.com.newsapp;
 
+import android.net.Uri;
+
 import java.util.List;
 
 /**
@@ -8,14 +10,13 @@ import java.util.List;
 
 public class QueryUtil {
 
-    public static final String QUERY = "https://content.guardianapis.com/search?api-key=275e5e77-68c3-4c43-a7f2-37a63f157af9&show-tags=contributor&show-fields=trailText";
-    public static final String QUERY_DEFAULT = "https://content.guardianapis.com/search";
-    private static final String QUERY_PARAM_BODY = "?api-key=275e5e77-68c3-4c43-a7f2-37a63f157af9&show-fields=body";
+    public static final String REQUEST_URL = "https://content.guardianapis.com/search";
 
-    private static final String API_KEY = "api-key=275e5e77-68c3-4c43-a7f2-37a63f157af9";
-    private static final String QUERY_PARAM_LIMIT = "page-size=";
-    private static final String QUERY_PARAM_FIELDS = "show-fields=";
-    private static final String QUERY_PARAM_TAGS = "show-tags=";
+    public static final String API_KEY = "275e5e77-68c3-4c43-a7f2-37a63f157af9";
+    public static final String QUERY_PARAM_KEY = "api-key";
+    public static final String QUERY_PARAM_LIMIT = "page-size";
+    public static final String QUERY_PARAM_FIELDS = "show-fields";
+    public static final String QUERY_PARAM_TAGS = "show-tags";
 
     private static final String TAG = QueryUtil.class.getSimpleName();
 
@@ -31,10 +32,23 @@ public class QueryUtil {
     }
 
     private static String getQueryParamBody(String query){
-        return query + QUERY_PARAM_BODY;
+        Uri baseUri = Uri.parse(QueryUtil.REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter(QUERY_PARAM_KEY, API_KEY);
+        uriBuilder.appendQueryParameter(QUERY_PARAM_FIELDS, "trailText, body");
+        uriBuilder.appendQueryParameter(QUERY_PARAM_TAGS, "contributor");
+
+        return uriBuilder.toString();
     }
 
-    public static String buildQueryFromCategory(String searchCategory) {
-        return QUERY + "&q=" + searchCategory;
+    public static Uri.Builder buildDefaultQuery(){
+        Uri baseUri = Uri.parse(REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter(QUERY_PARAM_KEY, API_KEY);
+        uriBuilder.appendQueryParameter(QUERY_PARAM_FIELDS, "trailText");
+        uriBuilder.appendQueryParameter(QUERY_PARAM_TAGS, "contributor");
+        return uriBuilder;
     }
 }

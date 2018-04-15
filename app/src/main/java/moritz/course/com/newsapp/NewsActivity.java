@@ -4,10 +4,12 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,11 +48,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(R.id.edit_text_category);
-                String query = QueryUtil.buildQueryFromCategory(
-                        editText.getText().toString());
+                String query = editText.getText().toString();
                 if(checkConnectivity()){
                     Bundle bundle = new Bundle();
-                    bundle.putString("query", query);
+                    bundle.putString("q", query);
                     getLoaderManager().restartLoader(NEWS_LOADER_ID, bundle, NewsActivity.this);
                 }
             }
@@ -94,12 +95,21 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle bundle) {
+        progressBar.setVisibility(View.VISIBLE);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String pageLimit = sharedPreferences.getString(
+                getString(R.string.settings_limit_key),
+                getString(R.string.settings_limit_default));
+
+        Uri.Builder uriBuilder = QueryUtil.buildDefaultQuery();
+        uriBuilder.appendQueryParameter(QueryUtil.QUERY_PARAM_LIMIT, pageLimit);
+
         if (bundle == null){
-            return new NewsLoader(NewsActivity.this, QueryUtil.QUERY);
-        }else{
-            progressBar.setVisibility(View.VISIBLE);
-            return new NewsLoader(NewsActivity.this, bundle.getString("query"));
+           return new NewsLoader(NewsActivity.this, uriBuilder.toString());
         }
+        uriBuilder.appendQueryParameter("q", bundle.getString("q"));
+        return new NewsLoader(NewsActivity.this, uriBuilder.toString());
     }
 
     @Override
@@ -134,7 +144,5 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(news.getWebUrl())));
                 }
             });
-
     }
-
 }

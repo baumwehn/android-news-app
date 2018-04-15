@@ -1,6 +1,5 @@
 package moritz.course.com.newsapp;
 
-import android.support.annotation.NonNull;
 import android.text.Html;
 import android.util.Log;
 
@@ -67,7 +66,11 @@ public final class JsonUtil {
         return newsArray;
     }
 
-
+    /**
+     * Strips all HTML tags and returns a readable String.
+     * @param textHtml
+     * @return
+     */
     private static String getTextFromHtml(String textHtml) {
         return Html.fromHtml(textHtml).toString();
     }
@@ -99,6 +102,11 @@ public final class JsonUtil {
         return null;
     }
 
+    /**
+     *
+     * @param jsonResponse
+     * @return
+     */
     public static String processNewsArticleJson(String jsonResponse){
         String body = "";
         if(jsonResponse==null){
