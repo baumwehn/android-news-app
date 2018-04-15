@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="search_hint">Category</string>
+    <string name="search_btn">Search</string>
+    <string name="proper_keywords">Try to use proper keywords to search for articles</string>
+    <string name="no_internet_connection">No internet connection available</string>
+
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News App Settings</string>
+
+    <string name="settings_limit_label">Maximum number of news displayed</string>
+    <string name="settings_limit_default">10</string>
+    <string name="settings_limit_key">number_limit</string>
+    <string name="settings_1"></string>
+    <string name="settings_2"></string>
+    <string name="settings_3"></string>
+</resources>
